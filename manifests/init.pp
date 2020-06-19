@@ -38,8 +38,10 @@ class squid3 (
   $service_ensure                = 'running',
   $service_enable                = $::squid3::params::service_enable,
   $service_name                  = $::squid3::params::service_name,
+  $executable_name               = 'squid',
   $access_log                    = $::squid3::params::access_log,
   $cache_log                     = $::squid3::params::cache_log,
+  $pid_filename                  = $::squid3::params::pid_filename,
   $cache_store_log               = $::squid3::params::cache_store_log,
   $strip_query_terms             = undef,
 ) inherits ::squid3::params {
@@ -92,7 +94,7 @@ class squid3 (
     notify       => Service['squid3_service'],
     content      => $squid_conf_content,
     source       => $squid_conf_source,
-    validate_cmd => "${cmdpath}/${service_name} -k parse -f %",
+    validate_cmd => "${cmdpath}/${executable_name} -k parse -f %",
   }
 
 }

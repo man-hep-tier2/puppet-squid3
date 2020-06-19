@@ -53,5 +53,5 @@ class squid3::params {
   $access_log      = [ "stdio:${log_directory}/access.log squid" ]
   $cache_log       = "${log_directory}/cache.log"
   $cache_store_log = "stdio:${log_directory}/store.log"
-
+  $pid_filename    = "/var/run/squid/${service_name}.pid"
 }
